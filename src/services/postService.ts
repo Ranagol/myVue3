@@ -1,20 +1,17 @@
 import { axiosApi } from "./axiosApi";
-import type { ErrorFromApi } from '@/types/api';
+import  { AxiosError } from 'axios';
+import type { Post } from '@/types/api';
+
 
 const postService = {
 
   get: async () => {
-    try {
-      const response = await axiosApi.get("/posts");
-      // console.log('response:', response.data);
-      return response.data;
-    } catch (error) {
-      // console.log('error:', error);
-      console.log('error:', error.message);
-
-      return error;
-    }
+    const response = await axiosApi.get("/posts");
+    console.log('response:', response.data);
+    return response.data;
   }
+  //TODO how to make this working with types?
+  //TODO how to add a catch block to this?
 }
 
 export default postService;
