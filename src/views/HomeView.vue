@@ -3,6 +3,10 @@
 </template>
 
 <script setup lang="ts">
+import postService from '@/services/postService';
+
+const posts = await postService.get();
+console.log('posts:', posts);
 
 </script>
 
