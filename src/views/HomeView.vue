@@ -36,7 +36,7 @@ let posts = ref([]);
 
 onMounted( async () => {
   console.log("Mounted!");
-  posts = await postService.get();//TODO why is this not reactive, when I get the posts objects from backend?
+  posts = await postService.getPosts();//TODO why is this not reactive in composition api, when I get the posts objects from backend?
   console.log('post:', posts)
 });
 

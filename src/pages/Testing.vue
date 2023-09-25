@@ -17,25 +17,27 @@ import { defineComponent } from 'vue';
 import postService from '@/services/postService';
 import { reactive, ref } from 'vue';
 import {onMounted} from "vue";
+import type { Post } from '@/types/api';
+
 
 export default defineComponent({
-  name: 'Testing',//todo why can't I see this component/data in Vue Dev Tool?
+  name: 'Testing',
   components: {},
   data() {
     return {
 
       name: 'Link' as string,
       age: 25 as number | string,
-      posts: [],
+      posts: []//TODO How to make this an array of Post objects? Like this... Post[]
     }
   },
   methods: {
 
-    changeName(name: string) {
+    changeName(name: string): void {
       this.name = name;
     },
 
-    changeAge(age: number | string) {
+    changeAge(age: number | string): void {
       this.age = age;
     }
   },
@@ -43,7 +45,14 @@ export default defineComponent({
 
   async mounted() {
     console.log(`the component is now mounted.`)
-    this.posts = await postService.get();
+    // this.posts = await postService.getPosts();
+    this.posts = await postService.getPost(1);
+    // this.posts = await postService.getPosts();
+    // this.posts = await postService.getPosts();
+    // this.posts = await postService.getPosts();
+    // this.posts = await postService.getPosts();
+    // this.posts = await postService.getPosts();
+
     console.log('posts:', this.posts)
   }
 
