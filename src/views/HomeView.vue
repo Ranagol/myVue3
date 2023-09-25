@@ -1,13 +1,21 @@
 <template>
   <div>
     <h1>Home</h1>
-    <!--//todo Why is this below making an error when uncommented? -->
-    <!-- <p>{{ testx }}</p> -->
+    <p>Testx: {{ testx }}</p>
+
+    <!-- <ul>
+      <li v-for="(item, index2) in myArray" :key='index2'>{{ item }}</li>
+    </ul> -->
+
+
+    <!-- {{ posts }} -->
+    
     <ul>
-      <li>ttt</li>
-      <!-- <li v-for="(post, index) in posts" :key="index">{{ post }}</li> -->
-      <!-- //TODO why do I have error here? -->
+      <li v-for="(post, index) in posts" :key="index">{{ post }}</li>
     </ul>  
+    <p>
+      <p>Response:</p>
+    </p>
   </div>
   
 </template>
@@ -16,13 +24,24 @@
 import postService from '@/services/postService';
 import { reactive, ref } from 'vue';
 import type { Post } from '@/types/api';
+import {onMounted} from "vue";
 
-const testx = ref(2);//todo why can't I see this in Vue Develop Tool?
+
+const testx = ref(2);
 console.log('testx:', testx.value);
+const myArray = ref(['apple', 'kiwi']);
 
-let posts: Post[] | {} = reactive({});
-posts = await postService.get();//TODO should I use await here too?
-console.log('postsxxx:', posts)
+let posts = ref([]);
+
+
+onMounted( async () => {
+  console.log("Mounted!");
+  posts = await postService.get();//TODO why is this not reactive, when I get the posts objects from backend?
+  console.log('post:', posts)
+});
+
+
+
 
 </script>
 
@@ -30,6 +49,4 @@ console.log('postsxxx:', posts)
 
 
 
-<style scoped>
-
-</style>
+<style scoped></style>
