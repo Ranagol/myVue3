@@ -19,11 +19,6 @@ export const useCounterStore = defineStore('counter', {
   },
 })
 
-/**
- * https://pinia.vuejs.org/cookbook/hot-module-replacement.html
- */
-if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useCounterStore, import.meta.hot))
-}
+
 
 

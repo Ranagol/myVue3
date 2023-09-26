@@ -1,6 +1,7 @@
 import { axiosApi } from "./axiosApi";
-import type { ObjectWithId } from "@/types/api";
 import type { AxiosApi } from "@/types/api";
+import type { Post } from '@/types/api';
+
 
 /**
  * request is sent here: //request is sent here: https://jsonplaceholder.typicode.com/postsposts. Thisis our backend.
@@ -59,7 +60,7 @@ class ServiceTemplate {
   }
 
   //Make sure to use id = 1 with jsonplaceholder backend.
-  async update(updatedItem: ObjectWithId):Promise<void>
+  async update(updatedItem: Post):Promise<void>
   {
     const response = await this.axiosApi.put(`/${this.url}/${updatedItem.id}`,updatedItem);
     console.log('response:', response);
