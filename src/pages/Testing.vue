@@ -32,7 +32,7 @@ export default defineComponent({
 
       name: 'Link' as string,
       age: 25 as number | string,
-      posts: [],//TODO How to make this an array of Post objects? Like this... Post[]
+      posts: [],//TODO How to make this an array of Post objects? Like this... Post[]. Do I need to do this at all?
       dummyPost:  {
         userId: 66,
         id: 1,

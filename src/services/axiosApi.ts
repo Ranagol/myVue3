@@ -1,4 +1,4 @@
-import axios from "axios";//TODO is this a good way of thinking?
+import axios from "axios";
 
 /**
  * Adding the base url to axios, which will be used in this app.

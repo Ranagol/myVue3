@@ -1,21 +1,19 @@
 <template>
   <div>
     <h1>Home</h1>
+
     <p>Testx: {{ testx }}</p>
 
-    <!-- <ul>
-      <li v-for="(item, index2) in myArray" :key='index2'>{{ item }}</li>
-    </ul> -->
-
-
-    <!-- {{ posts }} -->
+    <p>Posts: {{ posts[1] }}</p>
     
     <ul>
       <li v-for="(post, index) in posts" :key="index">{{ post }}</li>
     </ul>  
+
     <p>
       <p>Response:</p>
     </p>
+
   </div>
   
 </template>
@@ -28,12 +26,12 @@ import {onMounted} from "vue";
 import type { Ref } from 'vue'
 
 
-const testx = ref(2);
+const testx = ref(2);//TODO why is this not in the Vue Dev Tool?
 console.log('testx:', testx.value);
 
 //https://vuejs.org/guide/typescript/composition-api.html#typing-ref
 //const year: Ref<string | number> = ref('2020')
-let posts = ref<Promise | Post[]>([]);//TODO What type should I give to this?
+let posts = reactive([]);
 
 
 onMounted( async () => {
@@ -44,11 +42,7 @@ onMounted( async () => {
 
 
 
-
 </script>
-
-
-
 
 
 <style scoped></style>
