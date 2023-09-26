@@ -14,11 +14,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import postService from '@/services/postService';
-import { reactive, ref } from 'vue';
-import {onMounted} from "vue";
+import { postService } from '@/services/serviceTemplate.ts';
+import { onMounted } from "vue";
 import type { Post } from '@/types/api';
-
 
 export default defineComponent({
   name: 'Testing',
@@ -28,7 +26,13 @@ export default defineComponent({
 
       name: 'Link' as string,
       age: 25 as number | string,
-      posts: []//TODO How to make this an array of Post objects? Like this... Post[]
+      posts: [],//TODO How to make this an array of Post objects? Like this... Post[]
+      dummyPost:  {
+        userId: 66,
+        id: 1,
+        title: 'Andor title',
+        body: 'This is Andor post body.'
+      },
     }
   },
   methods: {
@@ -45,13 +49,11 @@ export default defineComponent({
 
   async mounted() {
     console.log(`the component is now mounted.`)
-    // this.posts = await postService.getPosts();
-    this.posts = await postService.getPost(1);
-    // this.posts = await postService.getPosts();
-    // this.posts = await postService.getPosts();
-    // this.posts = await postService.getPosts();
-    // this.posts = await postService.getPosts();
-    // this.posts = await postService.getPosts();
+    // this.posts = await postService.getAll();//works
+    // this.posts = await postService.get(1);//works
+    // this.posts = await postService.create(this.dummyPost);//works
+    // this.posts = await postService.update(this.dummyPost);//works
+    // this.posts = await postService.delete(1);//works
 
     console.log('posts:', this.posts)
   }
