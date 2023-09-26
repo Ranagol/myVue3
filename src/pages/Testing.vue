@@ -29,7 +29,6 @@ export default defineComponent({
   components: {},
   data() {
     return {
-
       name: 'Link' as string,
       age: 25 as number | string,
       posts: [],//TODO How to make this an array of Post objects? Like this... Post[]. Do I need to do this at all?

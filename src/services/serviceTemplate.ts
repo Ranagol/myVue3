@@ -1,6 +1,6 @@
 import { axiosApi } from "./axiosApi";
 import type { ObjectWithId } from "@/types/api";
-import type { AxiosApi } from "@/types/api";//TODO is there a better, more elegant way of solving this axios object type?
+import type { AxiosApi } from "@/types/api";
 
 /**
  * request is sent here: //request is sent here: https://jsonplaceholder.typicode.com/postsposts. Thisis our backend.

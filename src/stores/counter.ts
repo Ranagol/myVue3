@@ -3,7 +3,7 @@ import { defineStore, acceptHMRUpdate } from 'pinia'
 
 export const useCounterStore = defineStore('counter', {
   state: () => ({
-    count: 0 as number,//TODO why can't I use here Number instead of number type?
+    count: 0 as number,
   }),
   getters: {
     doubleCount: (state) => state.count * 2,

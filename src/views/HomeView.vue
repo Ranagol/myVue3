@@ -4,10 +4,10 @@
 
     <p>Testx: {{ testx }}</p>
 
-    <p>Posts: {{ posts[1] }}</p>
+    <p>Posts: {{ data.posts[1] }}</p>
     
     <ul>
-      <li v-for="(post, index) in posts" :key="index">{{ post }}</li>
+      <li v-for="(post, index) in data.posts" :key="index">{{ post }}</li>
     </ul>  
 
     <p>
@@ -26,18 +26,19 @@ import {onMounted} from "vue";
 import type { Ref } from 'vue'
 
 
-const testx = ref(2);//TODO why is this not in the Vue Dev Tool?
+const testx = ref(2);
 console.log('testx:', testx.value);
 
 //https://vuejs.org/guide/typescript/composition-api.html#typing-ref
 //const year: Ref<string | number> = ref('2020')
-let posts = reactive([]);
-
+const data = reactive({//TODO still not appearing in Vue Dev Tool
+  posts: [] as Post[],
+});
 
 onMounted( async () => {
   console.log("Mounted!");
-  posts = await postService.getAll();//TODO why is this not reactive in composition api, when I get the posts objects from backend?
-  console.log('post:', posts)
+  data.posts = await postService.getAll();
+  console.log('post:', data.posts)
 });
 
 
