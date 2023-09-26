@@ -4,8 +4,8 @@ import type { Post } from '@/types/api';
 
 export const usePostStore = defineStore('post', {
   state: () => ({
-    posts: [],
-    post: {}
+    posts: [] as Post[],
+    post: {} as Post
   }),
 
   getters: {

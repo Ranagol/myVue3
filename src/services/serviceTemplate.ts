@@ -34,14 +34,14 @@ class ServiceTemplate {
     this.url = url;
   }
 
-  async getAll():Promise<[]>
+  async getAll():Promise<Post[]>
   {
     const response = await this.axiosApi.get(`/${this.url}`);
     console.log('response arrived', response);
     return response.data;
   }
 
-  async get(id: Number):Promise<{}>
+  async get(id: Number):Promise<Post>
   {
     const response = await this.axiosApi.get(`/${this.url}/${id}`);
     console.log('response arrived', response);

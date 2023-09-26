@@ -1,38 +1,33 @@
 <template>
   <div>
     <h1>Home</h1>
-
     <p>Testx: {{ data.testx }}</p>
-
-    <p>Posts: {{ data.posts[1] }}</p>
+    <p>Posts: {{ postStore.posts[1] }}</p>
     
     <ul>
-      <li v-for="(post, index) in data.posts" :key="index">{{ post }}</li>
+      <!-- //TODO why do I have TS error here? :key -->
+      <li v-for="post in postStore.posts" :key="post.id">{{ post.title }}</li>
     </ul>  
-
-    <p>
-      <p>Response:</p>
-    </p>
-
   </div>
-  
 </template>
 
 <script setup lang="ts">
-import postService from '@/services/postService';
 import { reactive } from 'vue';
 import type { Post } from '@/types/api';
 import {onMounted} from "vue";
+import { usePostStore } from '@/stores/post';
 
 const data = reactive({
   posts: [] as Post[],
   testx: 2,
 });
 
+const postStore = usePostStore();
+
 onMounted( async () => {
-  console.log("Mounted!");
-  data.posts = await postService.getAll();
-  console.log('post:', data.posts)
+  console.log("Composition api component mounted!");
+  await postStore.getAll();
+  console.log('post:', postStore.posts)
 });
 
 
