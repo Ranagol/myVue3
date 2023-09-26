@@ -3,7 +3,7 @@ import { defineStore, acceptHMRUpdate } from 'pinia'
 
 export const useCounterStore = defineStore('counter', {
   state: () => ({
-    count: 0 as number,
+    count: 10 as number,
   }),
   getters: {
     doubleCount: (state) => state.count * 2,

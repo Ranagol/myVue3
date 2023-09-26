@@ -60,8 +60,16 @@ export const usePostStore = defineStore('post', {
 
     async delete(id: Number){
       try {
-        const response = await postService.delete(id);  
-        this.getAll();//getting all posts from db, with the newly updated post
+        const response = await postService.delete(id);//delete from backend
+        
+        /**
+         * delete from store
+         * 1-find the index of the post that we want to delete
+         * 2 - delete it
+         */
+        let index = this.posts.findIndex(post => post.id === id);//1
+        this.posts.splice(index, 1);//2
+
         alert('Success!');
       } catch (error) {
         console.log('Something went wrong. Please try again.', error);  
