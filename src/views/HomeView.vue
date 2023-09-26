@@ -25,18 +25,20 @@ import postService from '@/services/postService';
 import { reactive, ref } from 'vue';
 import type { Post } from '@/types/api';
 import {onMounted} from "vue";
+import type { Ref } from 'vue'
 
 
 const testx = ref(2);
 console.log('testx:', testx.value);
-const myArray = ref(['apple', 'kiwi']);
 
-let posts = ref([]);
+//https://vuejs.org/guide/typescript/composition-api.html#typing-ref
+//const year: Ref<string | number> = ref('2020')
+let posts = ref<Promise | Post[]>([]);//TODO What type should I give to this?
 
 
 onMounted( async () => {
   console.log("Mounted!");
-  posts = await postService.getPosts();//TODO why is this not reactive in composition api, when I get the posts objects from backend?
+  posts = await postService.getAll();//TODO why is this not reactive in composition api, when I get the posts objects from backend?
   console.log('post:', posts)
 });
 
