@@ -1,16 +1,23 @@
 <template>
   <h1>Testing</h1>
 
+  <div
+   v-if="isEmitted"
+  >Emit was triggered: {{ numberEmitted }}</div>
+
+  <div
+  v-else
+  >Emit was not triggered - yet.</div>
+
+  <hr>
+
   <PropsTesting
     :message="name"
     :post="postStore.posts[1]"
+    @my-number="doThis"
   />
 
-  <div>
-    <p>Name: {{ name }} - Age: {{ age }}</p>
-    <button @click="changeName('Zelda')">Change name</button>
-    <button @click="changeAge('30')">Change age</button>
-  </div>
+  
 
   <p>{{ counterStore.count || 'sorry, we have state/count issues here.' }}</p>
   <p>{{ counterStore.doubleCount || 'sorry, we have getter Pinia issues here.' }}</p>
@@ -38,7 +45,7 @@ export default defineComponent({
   },
   data() {
     return {
-      name: 'Link' as string,
+      name: 'Mario' as string,
       age: 25 as number | string,
      //posts: [],//TODO ANSWER-WAITING How to make this an array of Post objects? Like this... Post[]. Do I need to do this at all?
       dummyPost:  {
@@ -47,6 +54,14 @@ export default defineComponent({
         title: 'Andor title',
         body: 'This is Andor post body.'
       },
+      isEmitted: false,
+      numberEmitted: 0 //TODO how to make this null OR number type? I want it to be null, untill the number arrives from emit
+    }
+  },
+  methods: {
+    doThis(argumentReceived: number){
+      this.isEmitted = true;
+      this.numberEmitted = argumentReceived;
     }
   },
 
@@ -57,16 +72,6 @@ export default defineComponent({
     return { counterStore, postStore }
   },
 
-  methods: {
-
-    changeName(name: string): void {
-      this.name = name;
-    },
-
-    changeAge(age: number | string): void {
-      this.age = age;
-    }
-  },
 
   async mounted() {
     this.postStore.getAll();
