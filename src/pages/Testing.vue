@@ -1,28 +1,26 @@
 <template>
-  <h1>Testing</h1>
+  <h1>Testing component</h1>
 
   <div
    v-if="isEmitted"
   >Emit was triggered: {{ numberEmitted }}</div>
 
   <div
-  v-else
+    v-else
   >Emit was not triggered - yet.</div>
 
   <hr>
 
+  <!-- CHILD COMPONENT WITH PROPS AND EMIT -->
   <PropsTesting
-    :message="name"
+    :message="message"
     :post="postStore.posts[1]"
     @my-number="doThis"
   />
 
-  
-
-  <p>{{ counterStore.count || 'sorry, we have state/count issues here.' }}</p>
+  <!-- <p>{{ counterStore.count || 'sorry, we have state/count issues here.' }}</p>
   <p>{{ counterStore.doubleCount || 'sorry, we have getter Pinia issues here.' }}</p>
-  <button @click="counterStore.randomizeCounter()">Randomize counter</button>
-
+  <button @click="counterStore.randomizeCounter()">Randomize counter</button> -->
 
   <ul>
     <!-- <li v-for="(post, index) in postStore.posts" :key="index">{{ post.id }}</li> -->
@@ -46,6 +44,7 @@ export default defineComponent({
   data() {
     return {
       name: 'Mario' as string,
+      message: 'Message from parent' as string,
       age: 25 as number | string,
      //posts: [],//TODO ANSWER-WAITING How to make this an array of Post objects? Like this... Post[]. Do I need to do this at all?
       dummyPost:  {

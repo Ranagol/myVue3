@@ -8,11 +8,18 @@
     <button @click="changeName('Zelda')">Change name</button>
     <button @click="changeAge('30')">Change age</button>
 
-    <button
-      @click="emitSomething(5)"
-    >Emit testing button</button>
+    <p>
+      <h5>Emit testing</h5>
+      <button
+        @click="emitSomething(5)"
+      >Emit testing button</button>
+    </p>
 
-
+    <p>
+      <h5>Computed testing</h5>
+      <div>Greeting: {{ greeting }}</div>
+      <div>Post title: {{ postTitle }}</div>
+    </p>
   </div>
 </template>
 
@@ -26,7 +33,7 @@ export default defineComponent({
     post: {
       //for a brief moment post is undefined - until the post object arrives from backend.
       // Vue warn]: Invalid prop: type check failed for prop "post". Expected Object, got Undefined  at <PropsTesting message="Link" post=undefined > 
-      //TODO how to handle multiple possible types in props? Either undefined or Object
+      //TODO how to handle multiple possible types in props? Example either undefined or Object
       type: Object as PropType<Post>,
       required: true
     },
@@ -40,6 +47,24 @@ export default defineComponent({
     return {
       name: 'Mario' as string,
       age: 25 as number | string,
+    }
+  },
+  computed: {
+    greeting():String 
+    {
+      return this.message + '!'
+    },
+
+    /**
+     * Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'title')
+     * //What too do, untill the post.title arrives from backend?
+     */
+    postTitle():String
+    {
+      if (this.post) {
+        return this.post.title;
+      }
+      return 'post title will arrive soon.';
     }
   },
   
