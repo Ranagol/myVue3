@@ -1,33 +1,41 @@
 <template>
   <h1>Testing</h1>
 
+  <PropsTesting
+    :message="name"
+    :post="postStore.posts[1]"
+  />
+
+  <div>
+    <p>Name: {{ name }} - Age: {{ age }}</p>
+    <button @click="changeName('Zelda')">Change name</button>
+    <button @click="changeAge('30')">Change age</button>
+  </div>
+
   <p>{{ counterStore.count || 'sorry, we have state/count issues here.' }}</p>
   <p>{{ counterStore.doubleCount || 'sorry, we have getter Pinia issues here.' }}</p>
   <button @click="counterStore.randomizeCounter()">Randomize counter</button>
 
 
   <ul>
-    <li v-for="(post, index) in postStore.posts" :key="index">{{ post.id }}</li>
+    <!-- <li v-for="(post, index) in postStore.posts" :key="index">{{ post.id }}</li> -->
   </ul> 
 
-  <div>
-    <p>Name: {{ name }} - Age: {{ age }}</p>
-    <button @click="changeName('Zelda')">change name</button>
-    <button @click="changeAge('30')">change age</button>
-  </div>
-</template>
+  
+</template>   
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { postService } from '@/services/serviceTemplate.ts';
-import { onMounted } from "vue";
 import type { Post } from '@/types/api';
-import { useCounterStore } from '@/stores/counter.ts' 
-import { usePostStore } from '@/stores/post.ts';
+import { useCounterStore } from '@/stores/counter' 
+import { usePostStore } from '@/stores/post';
+import PropsTesting from '@/components/PropsTesting.vue';
 
 export default defineComponent({
   name: 'Testing',
-  components: {},
+  components: {
+    PropsTesting
+  },
   data() {
     return {
       name: 'Link' as string,
@@ -64,10 +72,10 @@ export default defineComponent({
     this.postStore.getAll();
     console.log('posts in store:', this.postStore.posts);
 
-    this.postStore.get(1);
-    console.log('1 unique post in store:', this.postStore.post);
+    // this.postStore.get(1);
+    // console.log('1 unique post in store:', this.postStore.post);
 
-    this.postStore.delete(1);
+    // this.postStore.delete(1);
 
     // this.posts = await postService.getAll();//works
     // this.posts = await postService.get(1);//works

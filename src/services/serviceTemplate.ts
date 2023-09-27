@@ -74,4 +74,5 @@ class ServiceTemplate {
 
 }
 
+//We just created a postService, but we easily, with similar line can create user/comment/... service
 export const postService = new ServiceTemplate('posts');
