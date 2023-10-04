@@ -1,34 +1,42 @@
 <template>
   <v-app>
     <!-- //TODO Here I use Vuetify components. All is installed, all is good. But. The tab width is
-    wrong, it is too narrow. How to set a normal width for the tabs and for the grid? Why is this
-    not in the middle? -->
-    <p>TAB</p>
-    <v-tabs
-      v-model="tab"
-      bg-color="primary"
-    >
-      <!-- TAB NAMES, THE ACTUAL TAB PART -->
-      <v-tab value="one">Tab 1</v-tab>
-      <v-tab value="two">Tab 2</v-tab>
-      <v-tab value="three">Tab 3</v-tab>
-    </v-tabs>
+    wrong, it is too narrow. How to set a normal width for the tabs and for the grid? Why is all this
+    not in the middle? I would like to set the tab and the grid justify-center, and to set their width.
+    -->
+    <v-container>
+      <p>TAB</p>
 
-    <v-card-text>
-      <v-window v-model="tab">
-        <v-window-item value="one">
-          Tab 1 content
-        </v-window-item>
+      <v-tabs
+        v-model="tab"
+        bg-color="primary"
+      >
+        <!-- TAB NAMES, THE ACTUAL TAB PART -->
+        <v-tab value="one">Tab 1</v-tab>
+        <v-tab value="two">Tab 2</v-tab>
+        <v-tab value="three">Tab 3</v-tab>
+      </v-tabs>
 
-        <v-window-item value="two">
-          Tab 2 content
-        </v-window-item>
+      <!-- TAB BODY -->
+      <v-card-text>
+        <v-window v-model="tab">
+          <v-window-item value="one">
+            Tab 1 content
+          </v-window-item>
 
-        <v-window-item value="three">
-          Tab 3 content
-        </v-window-item>
-      </v-window>
-    </v-card-text>
+          <v-window-item value="two">
+            Tab 2 content
+          </v-window-item>
+
+          <v-window-item value="three">
+            Tab 3 content
+          </v-window-item>
+        </v-window>
+      </v-card-text>
+
+    </v-container>
+
+    <hr>
 
     <p>GRID</p>
     <v-container class="bg-surface-variant">
