@@ -46,7 +46,7 @@ export default defineComponent({
       name: 'Mario' as string,
       message: 'Message from parent' as string,
       age: 25 as number | string,
-     //posts: [],//TODO ANSWER-WAITING How to make this an array of Post objects? Like this... Post[]. Do I need to do this at all?
+     posts: [] as Array<Post>,
       dummyPost:  {
         userId: 66,
         id: 1,

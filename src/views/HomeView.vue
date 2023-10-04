@@ -1,14 +1,25 @@
 <template>
-  <div>
-    <h1>Home</h1>
-    <p>Testx: {{ data.testx }}</p>
-    <p>Posts: {{ postStore.posts[1] }}</p>
-    
-    <ul>
-      <!-- //TODO why do I have TS error here? :key -->
-      <li v-for="post in postStore.posts" :key="post.id">{{ post.title }}</li>
-    </ul>  
-  </div>
+  <v-app style="width: 1400px;">
+    <div>
+      <h1>Home</h1>
+      <p>Testx: {{ data.testx }}</p>
+      <p>Posts: {{ postStore.posts[1] }}</p>
+      
+      <ul>
+
+        <!-- Your post.id is a "Number" (the TypeScript Type, with the capital N), in a attribute 
+          value for the html somehow only "string | number | symbol | undefined" is allowed and 
+          even is Number has a magic toString(), it's shows as Error in VSCode. That is why here 
+          we must use the :key="post.id.toString(), to make all this work with TS-->
+        <li 
+          v-for="post in postStore.posts" 
+          :key="post.id.toString()"
+        >{{ post.title }}</li>
+
+      </ul>  
+    </div>
+  </v-app>
+  
 </template>
 
 <script setup lang="ts">

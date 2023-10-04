@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue';
 import AboutView from '@/views/AboutView.vue';
 import Testing from '@/pages/Testing.vue';
+import VuetifyView from '@/views/VuetifyView.vue';
 
 
 const router = createRouter({
@@ -21,6 +22,11 @@ const router = createRouter({
       path: '/testing',
       name: 'testing',
       component: Testing
+    },
+    {
+      path: '/vuetify',
+      name: 'vuetify',
+      component: VuetifyView
     },
   ]
 })
