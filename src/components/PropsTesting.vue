@@ -1,6 +1,8 @@
 <template>
   <h4>PropsTesting component</h4>
   <p>Message: {{ message }}</p>
+
+  <!-- POST OBJECT -->
   <p>Post object: {{ post }}</p>
 
   <div>
@@ -33,9 +35,8 @@ export default defineComponent({
     post: {
       //for a brief moment post is undefined - until the post object arrives from backend.
       // Vue warn]: Invalid prop: type check failed for prop "post". Expected Object, got Undefined  at <PropsTesting message="Link" post=undefined > 
-      //TODO how to handle multiple possible types in props? Example either undefined or Object
       type: Object as PropType<Post>,
-      required: true
+      required: false
     },
     message: {
       type: String,
