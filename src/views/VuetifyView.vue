@@ -1,9 +1,5 @@
 <template>
   <v-app>
-    <!-- //TODO Here I use Vuetify components. All is installed, all is good. But. The tab width is
-    wrong, it is too narrow. How to set a normal width for the tabs and for the grid? Why is all this
-    not in the middle? I would like to set the tab and the grid justify-center, and to set their width.
-    -->
     <v-container>
       <p>TAB</p>
 

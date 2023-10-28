@@ -54,7 +54,7 @@ export default defineComponent({
         body: 'This is Andor post body.'
       },
       isEmitted: false,
-      numberEmitted: 0 //TODO how to make this null OR number type? I want it to be null, untill the number arrives from emit
+      numberEmitted: 0
     }
   },
   methods: {
