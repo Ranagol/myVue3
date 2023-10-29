@@ -17,7 +17,7 @@ export default defineConfig({
   test: {
     //make test related functions globally available
     globals: true,
-    setupFiles: ["./tests/setup.ts"],
+    setupFiles: ["./tests/setup.js"],
   },
 
 })
