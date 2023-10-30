@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/vue";
 
 //We have to import the component that we will test
-import MainNav from '@/components/Navigation/MainNav.vue';
+import MainNav from '@/components/MainNav.vue';
 
 describe('MainNav', () => {
   it('Displays company name', () => {

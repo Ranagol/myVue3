@@ -4,12 +4,12 @@
  * 
  */
 import { cleanup } from "@testing-library/vue";
-import matchers from "@testing-library/jest-dom/matchers";
+//import matchers from "@testing-library/jest-dom/matchers";//original solution
+import * as matchers from "@testing-library/jest-dom/matchers";//Raik's solution
 import { expect, afterEach } from "vitest";
 
 //Here we adding additional matchers for testing. Example for matcher: toBe. expect() comes from Vitest
-console.log('matchers:', matchers)
-expect.extend(matchers);//TypeError: Cannot convert undefined or null to object. matchers: undefined
+expect.extend(matchers);
 
 /**
  * Whenever we render a Vue component, VTL will create a virtual DOM. A virtual DOM is a simulated
