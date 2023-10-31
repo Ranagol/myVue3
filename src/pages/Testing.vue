@@ -39,7 +39,7 @@ import PropsTesting from '@/components/PropsTesting.vue';
 export default defineComponent({
   name: 'Testing',
   components: {
-    PropsTesting
+    PropsTesting,
   },
   data() {
     return {
