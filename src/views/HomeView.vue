@@ -30,7 +30,9 @@ import { usePostStore } from '@/stores/post';
 
 const data = reactive({
   posts: [] as Post[],
-  testx: 2,
+  //How to solve this error?
+  testx: 2,//TODO TypeError: Cannot read properties of undefined (reading 'testx')
+  //TODO another error: Failed to resolve component: v-appIf this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement.
 });
 
 const postStore = usePostStore();
@@ -41,9 +43,4 @@ onMounted( async () => {
   console.log('post:', postStore.posts)
 });
 
-
-
 </script>
-
-
-<style scoped></style>
